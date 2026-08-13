@@ -49,6 +49,7 @@ export default function App() {
     inputNumber,
     eraseCell,
     undo,
+    hasCandidateNotes,
     autoFillNotes,
     requestHint,
     updateSettings,
@@ -161,6 +162,7 @@ export default function App() {
                   onUndo={undo}
                   onHint={requestHint}
                   onAutoNotes={autoFillNotes}
+                  hasCandidateNotes={hasCandidateNotes}
                 />
               </div>
             )}

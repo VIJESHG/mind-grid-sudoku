@@ -434,10 +434,28 @@ export function useSudoku() {
     setHistory(newHistory);
   }, [history, inGame, isPaused, isCompleted, board]);
 
-  // Auto Fill Notes (Pencil Marks) for all empty cells
-  const autoFillNotes = useCallback(() => {
-    if (!inGame || isPaused || isCompleted) return;
+  // Check if any empty cell currently has candidate notes
+const hasCandidateNotes = board.some((r) =>
+  r.some((c) => c.value === 0 && c.notes.length > 0)
+);
 
+// Auto Fill / Clear Candidate Notes (Pencil Marks) for all empty cells
+const autoFillNotes = useCallback(() => {
+  if (!inGame || isPaused || isCompleted) return;
+
+  if (hasCandidateNotes) {
+    // Clear all candidate notes from empty cells
+    const newBoard = board.map((r) =>
+      r.map((c) => {
+        if (c.value === 0 && !c.given) {
+          return { ...c, notes: [] };
+        }
+        return c;
+      })
+    );
+    setBoard(newBoard);
+  } else {
+    // Auto-fill candidates
     const config = getGridConfig(gridSize);
     const rawValues = board.map((r) => r.map((c) => c.value));
     const candidateMap = getCandidateNotesForBoard(rawValues, config.boxRows, config.boxCols);
@@ -452,7 +470,9 @@ export function useSudoku() {
     );
 
     setBoard(newBoard);
-  }, [inGame, isPaused, isCompleted, gridSize, board]);
+  }
+}, [inGame, isPaused, isCompleted, gridSize, board, hasCandidateNotes]);
+
 
   // Get Smart Hint
   const requestHint = useCallback(() => {
@@ -642,10 +662,11 @@ export function useSudoku() {
     inputNumber,
     eraseCell,
     undo,
+    hasCandidateNotes,
     autoFillNotes,
     requestHint,
     updateSettings,
     getRemainingNumbers,
-    hasSavedGame: !!loadActiveGame(),
+    hasSavedGame: !!loadActiveGame()
   };
 }

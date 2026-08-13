@@ -4,6 +4,7 @@ import {
   Pencil,
   Sparkles,
   Undo2,
+  Trash2
 } from 'lucide-react';
 import React from 'react';
 import { GridSize } from '../types';
@@ -20,6 +21,7 @@ interface NumberPadProps {
   onUndo: () => void;
   onHint: () => void;
   onAutoNotes: () => void;
+  hasCandidateNotes?: boolean;
 }
 
 export const NumberPad: React.FC<NumberPadProps> = ({
@@ -34,6 +36,7 @@ export const NumberPad: React.FC<NumberPadProps> = ({
   onUndo,
   onHint,
   onAutoNotes,
+  hasCandidateNotes
 }) => {
   const maxNum = gridSize === '6x6' ? 6 : 9;
   const numbers = Array.from({ length: maxNum }, (_, i) => i + 1);
@@ -131,10 +134,24 @@ export const NumberPad: React.FC<NumberPadProps> = ({
         <button
           type="button"
           onClick={onAutoNotes}
-          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-semibold transition-colors focus:outline-none"
+          className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all focus:outline-none shadow-sm active:scale-95 ${
+            hasCandidateNotes
+              ? 'bg-rose-50 dark:bg-rose-950/40 hover:bg-rose-100 dark:hover:bg-rose-900/60 text-rose-700 dark:text-rose-300 border border-rose-200 dark:border-rose-900'
+              : 'bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300'
+          }`}
+          title={hasCandidateNotes ? 'Clear all pencil candidate notes' : 'Auto-fill pencil notes for empty cells'}
         >
-          <Sparkles className="w-3.5 h-3.5 text-indigo-500" />
-          <span>Auto-Fill Candidate Notes</span>
+          {hasCandidateNotes ? (
+            <>
+              <Trash2 className="w-3.5 h-3.5 text-rose-500" />
+              <span>Clear Candidate Notes</span>
+            </>
+          ) : (
+            <>
+              <Sparkles className="w-3.5 h-3.5 text-indigo-500" />
+              <span>Auto-Fill Candidate Notes</span>
+            </>
+          )}
         </button>
       </div>
     </div>
