@@ -19,6 +19,8 @@ Choose between **6×6 and 9×9 grids**, pick your difficulty, and solve at your 
 * 📱 **Mobile First** — Designed for phones, tablets, and desktop
 * ⌨️ **Keyboard Support** — Play comfortably on desktop
 * 🎉 **Completion Experience** — Celebrate every solved puzzle
+* 📲 **Installable PWA** — Install MindGrid on supported devices
+* 🌐 **Offline Support** — Continue playing without an internet connection
 
 ## 🎮 How to Play
 
@@ -79,6 +81,16 @@ MindGrid is designed to feel great on any screen.
 * Larger game layout
 * Optimized information panel
 
+## 📲 Progressive Web App
+
+MindGrid is also available as a **Progressive Web App (PWA)** on supported browsers and devices.
+
+* 📱 Install MindGrid on your phone or desktop
+* 🖥️ Open it in a standalone app-like experience
+* 🌐 Continue playing with offline support
+* 🔄 Automatic service worker updates
+* 🎨 Custom MindGrid app icon
+
 ## 🧩 Grid Sizes
 
 ### 6×6
@@ -103,6 +115,10 @@ Great for:
 * Challenging puzzles
 * Experienced players
 
+## 🌐 Play MindGrid
+
+**Live Demo:** https://vijeshg.github.io/mind-grid-sudoku/
+
 ## 🛠️ Tech Stack
 
 MindGrid is built with modern web technologies:
@@ -114,6 +130,7 @@ MindGrid is built with modern web technologies:
 * **Lucide React**
 * **Motion**
 * **Canvas Confetti**
+* **vite-plugin-pwa**
 
 The game runs primarily in the browser and uses local storage for persistent game statistics and settings.
 
@@ -189,7 +206,6 @@ Some ideas planned for future versions:
 * [ ] Ghost mode
 * [ ] Solving style insights
 * [ ] More game modes
-* [ ] Installable PWA
 * [ ] Sudoku learning mode
 
 ## 🤝 Contributing
@@ -212,8 +228,18 @@ See [`LICENSE`](LICENSE) for details.
 
 ---
 
+---
+
 <p align="center">
-  <strong>🧠 Think. Focus. Solve.</strong>
+  <strong>🧠 MindGrid Sudoku</strong>
   <br />
-  <sub>Built with care for people who enjoy a good puzzle.</sub>
+  <sub>Crafted & maintained by Vijesh G</sub>
+  <br />
+  <br />
+  <a href="https://github.com/VIJESHG/mind-grid-sudoku">
+    GitHub · mind-grid-sudoku
+  </a>
+  <br />
+  <br />
+  <strong>Think. Focus. Solve.</strong>
 </p>

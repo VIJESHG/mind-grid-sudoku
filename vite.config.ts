@@ -16,10 +16,10 @@ export default defineConfig(() => {
       VitePWA({
         registerType: 'autoUpdate',
 
-        includeAssets: [
-          'favicon.svg',
-          'apple-touch-icon.png',
-        ],
+        // includeAssets: [
+        //   'favicon.svg',
+        //   'apple-touch-icon.png',
+        // ],
 
         manifest: {
           name: 'MindGrid Sudoku',

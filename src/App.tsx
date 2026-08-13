@@ -14,6 +14,7 @@ import { useSudoku } from './hooks/useSudoku';
 import { getGridConfig } from './lib/sudokuEngine';
 import { resetStats } from './lib/storage';
 import { Difficulty, GridSize } from './types';
+import { Github } from 'lucide-react';
 
 export default function App() {
   const {
@@ -210,6 +211,28 @@ export default function App() {
         isOpen={isGameOver}
         onTryAgain={exitToSetup}
       />
+      <footer className="mt-8 pb-6 text-center">
+      <div className="flex items-center justify-center gap-2 text-xs text-slate-400">
+        <span>Crafted & maintained by</span>
+
+        <span className="font-medium text-slate-600">
+          Vijesh G
+        </span>
+
+        <span className="text-slate-300">·</span>
+
+        <a
+          href="https://github.com/vijeshg/mind-grid-sudoku"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1.5 font-medium text-slate-500 transition-colors hover:text-slate-800"
+          aria-label="MindGrid Sudoku GitHub repository"
+        >
+          <Github size={14} strokeWidth={1.8} />
+          <span>mind-grid-sudoku</span>
+        </a>
+      </div>
+    </footer>
     </div>
   );
 }
